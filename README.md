@@ -9,7 +9,7 @@ Natural Language Processing(NLP) demonstrates a great potential to support finan
 
 ## Requirements:
 ```
-sample data
+sample data (translated)
 ```
 ## Requirements:
 ```shell
