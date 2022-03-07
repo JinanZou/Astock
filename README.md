@@ -7,7 +7,7 @@ Natural Language Processing(NLP) demonstrates a great potential to support finan
 
 <img src=figs/model_structure.jpg width=800>
 
-## Requirements:
+## Dataset:
 ```
 sample data (translated)
 ```
