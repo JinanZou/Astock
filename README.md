@@ -12,10 +12,9 @@ Natural Language Processing(NLP) demonstrates a great potential to support finan
 - <a href="#Abstract">Abstract</a><br>
 - <a href="#Dataset">Dataset</a><br>
 - <a href="#Requirements">Requirements</a><br>
-- <a href="#Installation">Installation</a><br>
 - <a href="#Structure of the Model">Structure of the Model</a><br>
 - <a href="#Reference">Reference</a><br>
-- <a href="#Dataset">Dataset</a><br>
+- <a href="#Simulated Trading Strategy">Simulated Trading Strategy</a><br>
 
 
 ## Dataset:
@@ -24,8 +23,6 @@ Sample from the dataset
 | CODE | NAME | DATE | CREATED_DATE | TITLE | TITLE_TRANSLATED | READ | LABEL | PRICE_CHG(%) | 
 | ---------- | :-----------:  | :-----------: | ---------- | :-----------:  | :-----------: | ---------- | :-----------:  | :-----------: |
 |601991|大唐发电|2021-03-26 21:18:00+08:00|2021-03-26 21:11:00+08:00|大唐发电发布2020年年报，实现营业收入956.14亿元，同比上升0.17%；归属于母公司所有者的净利润30.40亿元，同比上涨约185.25%；基本每股收益0.1017元。|Datang Power released its 2020 annual report and achieved an operating revenue of 95.614 billion yuan, up 0.17% year on year; The net profit attributable to the owners of the parent company was 3.040 billion yuan, up about 185.25% year on year; The basic earnings per share is 0.1017 yuan.|4808633.0|1|0.006920415224913601|
-
-
 
 ## Requirements:
 ```shell
@@ -36,12 +33,13 @@ torch       : 1.10.0
 transformers: 4.7.0
 ```
 
-## Installation:
-```shell
-
-```
-
 ## Structure of the Model
 <img src=figs/model_structure.jpg width=800>
+
+## Simulated Trading Strategy
+We design a dynamic trading strategy based on news responses to back-test our models. Generally, we define three types of actions: short, long, and preserve. The stocks from China A-shares can be shortened by short selling, and we assume that it applies to all stocks. When a piece of news is published, an action is automatically triggered according to the result predicted by the models.
+Different types of the transaction have different methods to calculate the return rate.
+For a "long" transaction, we define its return as $\frac{P_{sell}-P_{buy}}{P_{buy}}\%$. For a "short" transaction, we define its return as $\frac{P_{sell}-P_{buy}}{P_{sell}}\%$( $P$ stands for the price).
+Our strategy considers three types of actions: short, preserve, and long. When news is published, the corresponding stock price will surge or plummet abnormally. This strategy is based on the assumption that the stock price will return to the normal interval after surging or plummeting. The trading actions will be triggered according to the result predicted by our model. Specifically, if a news piece's predicted result is a downtrend, the long action will be triggered, and if the result is an uptrend, the short action will be triggered. Otherwise, the preserve action will be triggered. The position will be closed the day after the next trading day. To make the strategy flexible to deal with the different situations, a dynamic weight is introduced to control the position \footnote{ The position is financial terminology representing the ratio of the transaction out of the whole asset.} of each transaction under different actions, especially for the actions of long and short. The weight is determined by the sum of the latest three days' return rates from the same type of action. The position for action $a_i$ is $P_{i}$ defined as Equation \ref{eq.eval_w} and the process is shown in the Figure \ref{transaction}
 
 ## Reference
