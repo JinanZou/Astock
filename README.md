@@ -55,11 +55,8 @@ $$
 
 <img src=figs/process_of_each_transaction.png width=800>
 
-## The study of using different alpha value
+## Implementation Details
 
-This section shows the result of the test accuracy regarding different hyper-parameter $\alpha$. When $\alpha$ equals 0.8, our model yields the best prediction accuracy. As shown in the Figure \ref{alpha}.
-
-<!-- <img src=figs/alpha.jpg width=800> -->
-
+ In our proposed model, we set the number of heads and layers of the transformer blocker to 1 and 2, respectively.  The weights of $L_{SSL}$ and $L_{CE}$ are set to 0.8 ($\alpha$) and 0.2, and we also conduct the comparison study by choosing different alpha. We use AdamW as the optimizer and train the model for 20 epochs with a batch size of 16 and a fixed learning rate of 1e-5. In addition, two epochs of linear warming up are used.
 
 ## Reference
