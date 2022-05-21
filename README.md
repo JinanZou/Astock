@@ -41,10 +41,24 @@ We design a dynamic trading strategy based on news responses to back-test our mo
 Different types of the transaction have different methods to calculate the return rate.
 For a "long" transaction, we define its return as $\frac{P_{sell}-P_{buy}}{P_{buy}}\%$. For a "short" transaction, we define its return as $\frac{P_{sell}-P_{buy}}{P_{sell}}\%$( $P$ stands for the price).
 
-Our strategy considers three types of actions: short, preserve, and long. When news is published, the corresponding stock price will surge or plummet abnormally. This strategy is based on the assumption that the stock price will return to the normal interval after surging or plummeting. The trading actions will be triggered according to the result predicted by our model. Specifically, if a news piece's predicted result is a downtrend, the long action will be triggered, and if the result is an uptrend, the short action will be triggered. Otherwise, the preserve action will be triggered. The position will be closed the day after the next trading day. To make the strategy flexible to deal with the different situations, a dynamic weight is introduced to control the position of each transaction under different actions, especially for the actions of long and short. The weight is determined by the sum of the latest three days' return rates from the same type of action. The position for action $a_i$ is $P_{i}$ defined as Equation \ref{eq.eval_w} and the process is shown in the Figure \ref{transaction}
+Our strategy considers three types of actions: short, preserve, and long. When news is published, the corresponding stock price will surge or plummet abnormally. This strategy is based on the assumption that the stock price will return to the normal interval after surging or plummeting. The trading actions will be triggered according to the result predicted by our model. Specifically, if a news piece's predicted result is a downtrend, the long action will be triggered, and if the result is an uptrend, the short action will be triggered. Otherwise, the preserve action will be triggered. The position will be closed the day after the next trading day. To make the strategy flexible to deal with the different situations, a dynamic weight is introduced to control the position of each transaction under different actions, especially for the actions of long and short. The weight is determined by the sum of the latest three days' return rates from the same type of action. The position for action $a_i$ is $P_{i}$ defined as Equation \ref{eq.eval_w} and the process is shown in the Figure
 
+Where $r_{ij}$ is the average return rate of the $j$-th latest day for a type of action $a_i$, $a_i \in \{a_1,a_2,a_3\}$. $N_{i}$ is the number of transactions for an action in a trading day. $C$ is the hyper-parameter to adjust the flexibility,  $p$ is the prediction probability of a piece of news. Figure describes the progress of the trading transaction from an action triggered by the news to the transaction finalized. 
+
+Since taking preserve action cannot make a profit, we introduce a hypothetical return rate to calculate the weight of preserve. Specifically, if the $t$-th latest day return rates of long action and short action are both negative, we assume that the return rate of the preserve action is the opposite average of short return and long return. Otherwise, the return rate of preserve action is set to 0.
+
+For each transaction, the commission fee is set to 0.13\%, and the position is opened by the price when the news is published. The position will be closed if a -10\% loss occurs.
 $$
     P_{i}  = \frac{p_iC^{\sum_{t=0}^{3}r_{ij}}}{N_i\sum_{i\in{A}}C^{\sum_{j=0}^{3}r_{ij}}}
 $$
-<img src="figs/process_of_each_transaction.png" width=800>
+
+<img src=figs/process_of_each_transaction.png width=800>
+
+## The study of using different alpha value
+
+This section shows the result of the test accuracy regarding different hyper-parameter $\alpha$. When $\alpha$ equals 0.8, our model yields the best prediction accuracy. As shown in the Figure \ref{alpha}.
+
+<img src=figs/alpha.jpg width=800>
+
+
 ## Reference
