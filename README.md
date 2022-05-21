@@ -48,6 +48,7 @@ Where $r_{ij}$ is the average return rate of the $j$-th latest day for a type of
 Since taking preserve action cannot make a profit, we introduce a hypothetical return rate to calculate the weight of preserve. Specifically, if the $t$-th latest day return rates of long action and short action are both negative, we assume that the return rate of the preserve action is the opposite average of short return and long return. Otherwise, the return rate of preserve action is set to 0.
 
 For each transaction, the commission fee is set to 0.13\%, and the position is opened by the price when the news is published. The position will be closed if a -10\% loss occurs.
+
 $$
     P_{i}  = \frac{p_iC^{\sum_{t=0}^{3}r_{ij}}}{N_i\sum_{i\in{A}}C^{\sum_{j=0}^{3}r_{ij}}}
 $$
@@ -58,7 +59,7 @@ $$
 
 This section shows the result of the test accuracy regarding different hyper-parameter $\alpha$. When $\alpha$ equals 0.8, our model yields the best prediction accuracy. As shown in the Figure \ref{alpha}.
 
-<img src=figs/alpha.jpg width=800>
+<!-- <img src=figs/alpha.jpg width=800> -->
 
 
 ## Reference
