@@ -59,4 +59,22 @@ $$
 
  In our proposed model, we set the number of heads and layers of the transformer blocker to 1 and 2, respectively.  The weights of $L_{SSL}$ and $L_{CE}$ are set to 0.8 ($\alpha$) and 0.2, and we also conduct the comparison study by choosing different alpha. We use AdamW as the optimizer and train the model for 20 epochs with a batch size of 16 and a fixed learning rate of 1e-5. In addition, two epochs of linear warming up are used.
 
-## Reference
+## Bibtex Citation 
+@misc{https://doi.org/10.48550/arxiv.2206.06606,
+  doi = {10.48550/ARXIV.2206.06606},
+  
+  url = {https://arxiv.org/abs/2206.06606},
+  
+  author = {Zou, Jinan and Cao, Haiyao and Liu, Lingqiao and Lin, Yuhao and Abbasnejad, Ehsan and Shi, Javen Qinfeng},
+  
+  keywords = {Computation and Language (cs.CL), Machine Learning (cs.LG), FOS: Computer and information sciences, FOS: Computer and information sciences},
+  
+  title = {Astock: A New Dataset and Automated Stock Trading based on Stock-specific News Analyzing Model},
+  
+  publisher = {arXiv},
+  
+  year = {2022},
+  
+  copyright = {arXiv.org perpetual, non-exclusive license}
+}
+
