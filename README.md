@@ -1,7 +1,7 @@
 # Astock: A New Dataset and Automated Stock Trading based on Stock-specific News Analyzing Model
 
 This repository provides codes for a dataset and automated stock trading based on stock-specific news analyzing model(https://aclanthology.org/2022.finnlp-1.24/).
-This paper has been accepted by FinNLP 2022 from IJCAI.
+This paper has been accepted by FinNLP 2022 from EMNLP.
 
 
 ## Abstract
