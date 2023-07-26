@@ -63,21 +63,21 @@ $$
  In our proposed model, we set the number of heads and layers of the transformer blocker to 1 and 2, respectively.  The weights of $L_{SSL}$ and $L_{CE}$ are set to 0.8 ($\alpha$) and 0.2, and we also conduct the comparison study by choosing different alpha. We use AdamW as the optimizer and train the model for 20 epochs with a batch size of 16 and a fixed learning rate of 1e-5. In addition, two epochs of linear warming up are used.
 
 ## Bibtex Citation 
-@misc{https://doi.org/10.48550/arxiv.2206.06606,
-  doi = {10.48550/ARXIV.2206.06606},
-  
-  url = {https://arxiv.org/abs/2206.06606},
-  
-  author = {Zou, Jinan and Cao, Haiyao and Liu, Lingqiao and Lin, Yuhao and Abbasnejad, Ehsan and Shi, Javen Qinfeng},
-  
-  keywords = {Computation and Language (cs.CL), Machine Learning (cs.LG), FOS: Computer and information sciences, FOS: Computer and information sciences},
-  
-  title = {Astock: A New Dataset and Automated Stock Trading based on Stock-specific News Analyzing Model},
-  
-  publisher = {arXiv},
-  
-  year = {2022},
-  
-  copyright = {arXiv.org perpetual, non-exclusive license}
+@inproceedings{zou-etal-2022-astock,
+    title = "Astock: A New Dataset and Automated Stock Trading based on Stock-specific News Analyzing Model",
+    author = "Zou, Jinan  and
+      Cao, Haiyao  and
+      Liu, Lingqiao  and
+      Lin, Yuhao  and
+      Abbasnejad, Ehsan  and
+      Shi, Javen Qinfeng",
+    booktitle = "Proceedings of the Fourth Workshop on Financial Technology and Natural Language Processing (FinNLP)",
+    month = dec,
+    year = "2022",
+    address = "Abu Dhabi, United Arab Emirates (Hybrid)",
+    publisher = "Association for Computational Linguistics",
+    url = "https://aclanthology.org/2022.finnlp-1.24",
+    pages = "178--186",
+    abstract = "Natural Language Processing (NLP) demonstrates a great potential to support financial decision-making by analyzing the text from social media or news outlets. In this work, we build a platform to study the NLP-aided stock auto-trading algorithms systematically. In contrast to the previous work, our platform is characterized by three features: (1) We provide financial news for each specific stock. (2) We provide various stock factors for each stock. (3) We evaluate performance from more financial-relevant metrics. Such a design allows us to develop and evaluate NLP-aided stock auto-trading algorithms in a more realistic setting. In addition to designing an evaluation platform and dataset collection, we also made a technical contribution by proposing a system to automatically learn a good feature representation from various input information. The key to our algorithm is a method called semantic role labeling Pooling (SRLP), which leverages Semantic Role Labeling (SRL) to create a compact representation of each news paragraph. Based on SRLP, we further incorporate other stock factors to make the final prediction. In addition, we propose a self-supervised learning strategy based on SRLP to enhance the out-of-distribution generalization performance of our system. Through our experimental study, we show that the proposed method achieves better performance and outperforms all the baselines{'} annualized rate of return as well as the maximum drawdown of the CSI300 index and XIN9 index on real trading. Our Astock dataset and code are available at https://github.com/JinanZou/Astock.",
 }
 
